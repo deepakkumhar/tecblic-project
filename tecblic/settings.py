@@ -105,7 +105,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Swagger Otp APP',
+    'TITLE': 'Swagger Tecblic APP',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'SCHEMA_PATH_PREFIX_TRIM': True,
