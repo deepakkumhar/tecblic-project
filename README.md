@@ -24,7 +24,7 @@
 > ##### 1. Clone repository
 
 ```sh
-git clone https://github.com/bhargavsonagara/WebOtp.git
+git clone https://github.com/bhargavsonagara/tecblic-project
 ```
 
 > ##### 2. If you not having pip,Django let's install
