@@ -231,18 +231,14 @@ class UpdateProductAPIView(generics.GenericAPIView):
             product = Products.objects.get(id=self.kwargs['id'])
             serializer = self.serializer_class(data=request.data)
             if serializer.is_valid(raise_exception=False):
-                if request.data.get('product_name') != None:
-                    if len(request.data['product_name']) != 0:
-                        product.product_name = request.data.get('product_name')
-                if request.data.get('price') != None:
-                    if len(request.data['price']) != 0:
-                        product.price = request.data.get('price')
-                if request.data.get('description') != None:
-                    if len(request.data['description']) != 0:
-                        product.description = request.data.get('description')
-                if request.data.get('image') != None:
-                    if len(request.data['image']) != 0:
-                        product.image = request.data['image']
+                if request.data.get('product_name') != None and len(request.data['product_name']) != 0:
+                    product.product_name = request.data.get('product_name')
+                if request.data.get('price') != None and len(request.data['price']) != 0:
+                    product.price = request.data.get('price')
+                if request.data.get('description') != None and len(request.data['description'])!= 0:
+                    product.description = request.data.get('description')
+                if request.data.get('image') != None and len(request.data['image'])!=0:
+                    product.image = request.data['image']
                 product.save()
                 return send_response_validation(request, code=200, message='Product Updated Successfully')
             else:
