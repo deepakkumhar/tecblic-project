@@ -48,7 +48,22 @@ pipenv install -r requirements.txt
 > ##### 5. Setting up your project secret key in .env
 
 ```sh
-SECRET_KEY = enter django project secret key
+DEBUG=debug
+
+DB_NAME=db name
+DB_USER=user name
+DB_PASSWORD=password  
+DB_HOST=localhost
+DB_PORT=port number
+
+SECRET_KEY=enter django project secret key
+
+BASE_URL=provide your host name ex. site.com 
+SWAGGER_SERVER=provide your server path ex. http://site.com
+
+example for localhost:
+BASE_URL=127.0.0.1
+SWAGGER_SERVER=http://127.0.0.1:8000/
 ```
 
 > ##### 6. Create Database Manuanlly in PgAdmin
