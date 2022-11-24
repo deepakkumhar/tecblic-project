@@ -1,5 +1,9 @@
 from django.urls import path, include
 from .views import *
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'users', crud, basename='user')
 
 urlpatterns = [
     path('register', Register.as_view(),name="registration"),
@@ -9,3 +13,5 @@ urlpatterns = [
     path('update-product/<str:id>', UpdateProductAPIView.as_view(), name="update_product"),
     path('delete-product/<str:id>', DeleteProductAPIView.as_view(), name="delete_product"),
 ]
+
+urlpatterns += router.urls

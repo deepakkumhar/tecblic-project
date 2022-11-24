@@ -95,12 +95,15 @@ class BlankableDecimalField(serializers.DecimalField):
 
         return super(BlankableDecimalField, self).to_internal_value(data)
 
-class UpdateProductSerializer(serializers.Serializer):
+class UpdateProductSerializer(serializers.ModelSerializer):
     product_name = serializers.CharField(required=False)
     price = BlankableDecimalField(required=False, max_digits=10, decimal_places=2)
     description = serializers.CharField(required=False)
     image = serializers.CharField(required=False)
-
+    class Meta:
+        model = Products
+        fields = ('product_name', 'price', 'description', 'image',)
+        
 class RetrieveProductSerializer(serializers.Serializer):
     id = serializers.CharField(required=False)
     account_id = serializers.CharField(required=False)
@@ -110,6 +113,19 @@ class RetrieveProductSerializer(serializers.Serializer):
     image = serializers.CharField(required=False)
 
 class RetrieveResponse(serializers.Serializer):
+    responseCode = serializers.IntegerField()
+    responseMessage = serializers.CharField()
+    responseData = RetrieveProductSerializer(required=False)
+
+class ListProductSerializer(serializers.Serializer):
+    id = serializers.CharField(required=False)
+    account_id = serializers.CharField(required=False)
+    product_name = serializers.CharField(required=False)
+    price = BlankableDecimalField(required=False, max_digits=5, decimal_places=2)
+    description = serializers.CharField(required=False)
+    image = serializers.CharField(required=False)
+
+class ListResponse(serializers.Serializer):
     responseCode = serializers.IntegerField()
     responseMessage = serializers.CharField()
     responseData = RetrieveProductSerializer(many=True)
